@@ -1,0 +1,9 @@
+{% extends './base.html' %}
+
+{% block title %} Home Page {% endblock %}
+
+{% block content %}
+    <a class="waves-effect waves-light btn" href="{% url 'utenti' %}">Lista clienti</a>
+
+    <a class="waves-effect waves-light btn" href="{% url 'iscrizioni' %}">Lista iscrizioni</a>
+{% endblock %}

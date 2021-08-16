@@ -1,0 +1,31 @@
+{% extends './base.html' %}
+
+{% block title %} Home Page {% endblock %}
+
+{% block content %}
+    <a class="waves-effect waves-light btn" href="{% url 'utente_nuovo' %}">Aggiungi cliente</a>
+    <h1>Lista clienti</h1>
+    {% if object_list %}
+        <table class="responsive-table striped">
+            <thead>
+                <tr>
+                    <td>Nome</td>
+                    <td>Note</td>
+                    <td>Verificato</td>
+                </tr>
+            </thead>
+            <tbody>
+        {% for object in object_list %}
+                <tr>
+                    <td>{{ object.username }}</td>
+                    <td>{{ object.note }}</td>
+                    <td>{% if object.verificato %}✅{% else %}❌{% endif %}</td>
+                    <td><a class="waves-effect waves-light btn" href="{% url 'utente' object.id %}">🔍</a></td>
+                </tr>
+        {% endfor %}
+            </tbody>
+        </table> 
+    {% else %}
+        <p>Nessun cliente presente.</p> 
+    {% endif %}
+{% endblock %}
